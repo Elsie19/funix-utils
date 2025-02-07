@@ -1,6 +1,5 @@
 program tail
     use flap, only: command_line_interface
-    use iso_fortran_env, only: output_unit
 
     implicit none
 
@@ -26,11 +25,11 @@ program tail
     if (error /= 0) stop
     call cli%get(switch='-n', val=lines, error=error) ; if (error /= 0) stop
     call cli%get(position=1, val=file, error=error) ; if (error /= 0) stop
-    print '(A)', cli%progname // ' has been called with the following argument:'
+    print '(a)', cli%progname // ' has been called with the following argument:'
     call cli%free()
-    write(output_unit, '(a, i0)') "Lines = ", lines
-    write(output_unit, '(a, a)') "File = ", file
+    print '(a, i0)', "Lines = ", lines
+    print '(a, a)', "File = ", file
 
     count = command_argument_count()
-    print *, count
+    print '(i0)', count
 end program tail
