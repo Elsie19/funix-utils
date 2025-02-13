@@ -25,8 +25,7 @@ program tail
         act='store',                      &
         def='10',                         &
         error=error)
-    call cli%add(positional=.true., position=1, help='file', required=.true., act='store')
-    if (error /= 0) stop
+    call cli%add(positional=.true., position=1, help='file', required=.true., act='store') ; if (error /= 0) stop
     call cli%get(switch='-n', val=lines, error=error) ; if (error /= 0) stop
     call cli%get(position=1, val=file, error=error) ; if (error /= 0) stop
 
